@@ -43,7 +43,7 @@ const Data = () => {
   const [delID, setDelID] = useState(null)
 
   const deleteAPI = async () => {
-    let result = await fetch(`http://localhost:5000/delete/${delID}`, {
+    let result = await fetch(`http://localhost:5000/delete/${delID}`, {  //eslint-disable-line
       method: 'DELETE'
     })
 
