@@ -49,7 +49,7 @@ const Update = () => {
 
         if (requestID) {
 
-            let result = await fetch(`http://localhost:5000/update/${requestID}`)
+            let result = await fetch(`https://studentmanagement-backend.onrender.com/update/${requestID}`)
 
             result = await result.json()
 
@@ -100,7 +100,7 @@ const Update = () => {
     // Update API
 
     const updateAPI = async () => {
-        let result = await fetch(`http://localhost:5000/update/${requestID}`, {
+        let result = await fetch(`https://studentmanagement-backend.onrender.com/update/${requestID}`, {
             method: 'PUT',
             body: JSON.stringify(values),
             headers: {
