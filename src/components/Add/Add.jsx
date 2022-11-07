@@ -36,7 +36,7 @@ const Add = () => {
 
 
     const fetchAPI = async () => {
-        let result = await fetch('http://localhost:5000/streg', {
+        let result = await fetch('https://studentmanagement-backend.onrender.com/streg', {
             method: 'POST',
             body: JSON.stringify(values),
             headers: {
