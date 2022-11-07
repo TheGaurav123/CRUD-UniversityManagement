@@ -11,7 +11,7 @@ const Data = () => {
 
 
   const fetchAPI = async () => {
-    let result = await fetch('http://localhost:5000/getstudent')
+    let result = await fetch('https://studentmanagement-backend.onrender.com/getstudent')
 
     result = await result.json()
     setStudentData(result.result)
@@ -21,7 +21,7 @@ const Data = () => {
   // Search API
   const searchAPI = async (e) => {
     if (e.target.value) {
-      let result = await fetch(`http://localhost:5000/search/${e.target.value}`)
+      let result = await fetch(`https://studentmanagement-backend.onrender.com/search/${e.target.value}`)
       result = await result.json()
 
       if (result.result !== 'Student Not Found...') {
@@ -43,7 +43,7 @@ const Data = () => {
   const [delID, setDelID] = useState(null)
 
   const deleteAPI = async () => {
-    let result = await fetch(`http://localhost:5000/delete/${delID}`, {  //eslint-disable-line
+    let result = await fetch(`https://studentmanagement-backend.onrender.com/delete/${delID}`, {  //eslint-disable-line
       method: 'DELETE'
     })
 
