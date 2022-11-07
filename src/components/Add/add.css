@@ -1,0 +1,51 @@
+.main-add-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+
+
+.logout-btn{
+    margin-left: -1.8rem;
+    font-size: .9rem;
+    padding: .3rem .7rem;
+    border-radius: 6px;
+    background-color: transparent;
+    border: none;
+    transition: .5s;
+}
+
+.logout-btn:hover{
+    transition: .3s;
+    background-color: var(--primary);
+    color: white;
+}
+
+#data-btn{
+    font-size: .9rem;
+    padding: .3rem .7rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    transition: .5s;
+}
+
+#data-btn:hover{
+    transition: .3s;
+    background-color: var(--primary);
+    color: white;
+}
+
+
+
+
+@media (min-width:320px) and (max-width:768px){
+    #input-width{
+        width: 98% !important;
+    }
+
+}

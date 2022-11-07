@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+:root{
+  --primary : #FFB9B9;
+  --light : #FFDDD2;
+  --transition : #ffacac;
+  --support : #FF8DC7;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* I N P U T   S T Y L I N G */
+
+
+.input-style input,button{
+  padding: .6rem .6rem;
+  border-radius: 6px;
+  border: .5px solid var(--primary);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.input-style input::placeholder{
+  font-size: .9rem;
+}
+
+
+.input-style button{
+  background-color: var(--primary);
+  border-radius: 6px;
+  font-weight: bold;
+  transition: .5s;
+}
+
+
+
+.input-style button:hover{
+  transition: .3s;
+  background-color: var(--transition);
+}
+
+
+/*   E R R O R    S T Y L I N G */
+
+.error{
+  color: red;
+  font-size: .7rem;
+  font-weight: bold;
+}
+
+
+/*    A N C H O R   T A G    S T Y L I N G */
+.anchor-tag{
+  color: black;
+  font-size: .8rem;
+}
+
+.anchor-tag:hover{
+  color: black;
+}
+
+
+
+/*     A N C H O R    B U T T O N    S T Y L I N G */
+.anchor-btn{
+    font-size: .9rem;
+    padding: .3rem .7rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    transition: .5s;
+}
+
+
+.anchor-btn:hover{
+  transition: .3s;
+  background-color: var(--primary);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+
+/* I N P U T   I C O N    S T Y L I N G */
+
+.input-icon{
+  position: relative;
+  top: -200%;
+  left: -1.5%;
+  cursor: pointer;
+  font-size: .9rem;
+  color: rgb(95, 95, 95);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+@media (min-width:320px) and (max-width:768px){
+  .input-icon{
+    left: -2.5%;
   }
 }

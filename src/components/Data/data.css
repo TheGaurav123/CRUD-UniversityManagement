@@ -1,0 +1,99 @@
+.table-responsive {
+    height: 90vh;
+    overflow: auto;
+    width: 90vw;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.157) 0px 0px 10px;
+}
+
+
+.table-heading {
+    background-color: rgba(0, 0, 0, 0.744);
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+
+.table-body{
+    font-size: .9rem;
+    background-color: white;
+}
+
+#search-btn {
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: .2rem 1rem;
+    margin-right: 1rem;
+    outline: none;
+}
+
+#search-btn::placeholder {
+    font-size: .7rem;
+    color: black;
+}
+
+
+/* #filter{
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+ */
+
+.search-box {
+    text-align: right !important;
+}
+
+
+
+
+
+
+.action-btn{
+    transition: .5s;
+    height: 0;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-size: 1rem;
+}
+
+.action-btn a{
+    color: rgba(0, 0, 0, 0.845);
+}
+
+.action-btn a:hover{
+    color: black;
+    transition: .3s;
+}
+
+.action-btn:hover{
+    transition: .3s;
+    color: rgb(227, 7, 7);
+}
+
+
+
+
+.confirm-del-btn{
+    background-color: red !important;
+    color: white !important;
+    transition: .5s !important;
+}
+
+.confirm-del-btn:hover{
+    transition: .3s !important;
+    background-color: rgb(203, 2, 2) !important;
+}
+
+
+.no-Data{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
