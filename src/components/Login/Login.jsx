@@ -42,7 +42,7 @@ const Login = () => {
     
 
     const fetchAPI = async () => {
-        let result = await fetch('http://localhost:5000/login', {
+        let result = await fetch('https://studentmanagement-backend.onrender.com/login', {
             body: JSON.stringify(values),
             method: 'POST',
             headers: {
