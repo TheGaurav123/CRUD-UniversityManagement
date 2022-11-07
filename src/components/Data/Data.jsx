@@ -47,7 +47,7 @@ const Data = () => {
       method: 'DELETE'
     })
 
-    result = await result.json()
+//     result = await result.json()
 
     toast.success('Student Deleted Successfully...', {
       position: "top-center",
