@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import Loading from '../Loading/Loading'
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -14,6 +15,12 @@ const Update = () => {
     const params = useParams()
 
     const requestID = params.id
+
+
+
+    // Login Spinner
+
+    const [spinnerState, setSpinnerState] = useState()
 
 
 
@@ -37,7 +44,8 @@ const Update = () => {
         onSubmit: () => {
             updateAPI()
         }
-    })
+    }
+    )
 
 
 
@@ -96,7 +104,7 @@ const Update = () => {
 
 
 
-    
+
     // Update API
 
     const updateAPI = async () => {
@@ -106,9 +114,14 @@ const Update = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        },
+            setSpinnerState(true))
 
         result = await result.json()
+
+        if (result) {
+            setSpinnerState(false)
+        }
 
         if (result.result === 'Data Updated Successfully...') {
             toast.success('Data Updated Successfully...', {
@@ -148,6 +161,8 @@ const Update = () => {
 
     return (
         <>
+            {spinnerState ? <Loading /> : null}
+
             <div className='main-add-container pb-2'>
                 <div className="container d-flex mt-2 mt-md-3 mb-5 mb-md-4 justify-content-between px-5 px-md-0">
                     <Link to='/data' id='data-btn'>Back</Link>

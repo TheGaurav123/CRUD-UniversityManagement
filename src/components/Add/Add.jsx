@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { studentSchema } from '../../Schemas/StudentSchema'
 import { ToastContainer, toast } from 'react-toastify'
+import Loading from '../Loading/Loading'
 import 'react-toastify/dist/ReactToastify.css';
 
 const initialValues = {
@@ -20,6 +21,10 @@ const initialValues = {
 }
 
 const Add = () => {
+
+    // Login Spinner
+
+    const [spinnerState, setSpinnerState] = useState()
 
     const navigate = useNavigate()
 
@@ -42,7 +47,13 @@ const Add = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        },
+            setSpinnerState(true)
+        )
+
+        if (result) {
+            setSpinnerState(false)
+        }
 
         result = await result.json()
 
@@ -59,7 +70,7 @@ const Add = () => {
             });
         }
 
-        else{
+        else {
             toast.success('Student Added Successfully !', {
                 position: "top-center",
                 autoClose: 5000,
@@ -69,7 +80,7 @@ const Add = () => {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-                });
+            });
         }
 
     }
@@ -87,6 +98,8 @@ const Add = () => {
     return (
 
         <>
+
+            {spinnerState ? <Loading /> : null}
             <div className='main-add-container pb-2'>
                 <div className="container d-flex mt-2 mt-md-3 mb-5 mb-md-4 justify-content-between px-5 px-md-0">
                     <Link to='/data' id='data-btn'>Data</Link>

@@ -18,6 +18,7 @@ const initialValues = {
 
 const Signup = () => {
 
+
     //  HideShow
     const [view, setView] = useState(false)
 
@@ -53,6 +54,8 @@ const Signup = () => {
         })
 
         result = await result.json();
+
+
 
         if (result.result === 'User Already Exist') {
             toast.error('User already exist', {

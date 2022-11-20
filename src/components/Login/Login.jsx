@@ -5,6 +5,7 @@ import { loginSchema } from '../../Schemas/LoginSchema'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../Loading/Loading'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
@@ -14,6 +15,11 @@ const initialValues = {
 }
 
 const Login = () => {
+
+    // Login Spinner
+
+    const [spinnerState, setSpinnerState] = useState()
+
 
     // HideShow
     const [view, setView] = useState(false)
@@ -32,14 +38,14 @@ const Login = () => {
 
 
     // Already LoggedIn redirection
-  useEffect(()=>{
-    const checkAuth = localStorage.getItem('usr')
+    useEffect(() => {
+        const checkAuth = localStorage.getItem('usr')
 
-    if(checkAuth){
-        navigate('/')
-    }
-  },[]) //eslint-disable-line
-    
+        if (checkAuth) {
+            navigate('/')
+        }
+    }, []) //eslint-disable-line
+
 
     const fetchAPI = async () => {
         let result = await fetch('https://studentmanagement-backend.onrender.com/login', {
@@ -48,9 +54,18 @@ const Login = () => {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        },
+        setSpinnerState(true)
+        )
+
+
 
         result = await result.json()
+
+        if(result){
+            setSpinnerState(false)
+        }
+
 
         if (result.result !== 'User not found...') {
             localStorage.setItem('usr', result.result)
@@ -75,6 +90,9 @@ const Login = () => {
 
     return (
         <>
+
+            {spinnerState ? <Loading /> : null}
+
             <div className="login-container p-1">
                 <div className="container">
 
@@ -91,7 +109,7 @@ const Login = () => {
                                     {errors.Email && touched.Email ? <span className='error mt-1'>{errors.Email}</span> : null}
                                 </div>
                                 <div className="col-12 d-flex mb-md-5 mb-5 flex-column input-style">
-                                    <input onChange={handleChange} type={`${view ? 'text' : 'password'}`} placeholder='Password' name='Password' /> <span className='d-flex justify-content-end' onClick={()=>setView(!view)}> {view ? <i className="fa-solid fa-eye input-icon"></i> : <i className="fa-sharp fa-solid fa-eye-slash input-icon"></i>}</span>
+                                    <input onChange={handleChange} type={`${view ? 'text' : 'password'}`} placeholder='Password' name='Password' /> <span className='d-flex justify-content-end' onClick={() => setView(!view)}> {view ? <i className="fa-solid fa-eye input-icon"></i> : <i className="fa-sharp fa-solid fa-eye-slash input-icon"></i>}</span>
                                     {errors.Password && touched.Password ? <span className='error mt-1'>{errors.Password}</span> : null}
                                 </div>
                                 <div className="col-12 d-flex mt-2 flex-column input-style">

@@ -6,6 +6,7 @@ import Update from "./components/Update/Update";
 import Data from "./components/Data/Data";
 import Error from "./components/404/Error";
 import Private from "./components/Private/Private";
+import Loading from './components/Loading/Loading'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/*" element={<Error />} />
+          <Route path="/loading" element={<Loading />} />
         </Routes>
       </BrowserRouter>
     </>

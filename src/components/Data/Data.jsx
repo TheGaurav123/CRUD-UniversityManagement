@@ -3,17 +3,25 @@ import './data.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import Loading from '../Loading/Loading'
 import 'react-toastify/dist/ReactToastify.css';
 
 const Data = () => {
+
+  // Login Spinner
+
+  const [spinnerState, setSpinnerState] = useState()
 
   const [studentData, setStudentData] = useState([])
 
 
   const fetchAPI = async () => {
     let result = await fetch('https://studentmanagement-backend.onrender.com/getstudent')
-
+    setSpinnerState(true)
     result = await result.json()
+    if (result) {
+      setSpinnerState(false)
+    }
     setStudentData(result.result)
   }
 
@@ -22,7 +30,10 @@ const Data = () => {
   const searchAPI = async (e) => {
     if (e.target.value) {
       let result = await fetch(`https://studentmanagement-backend.onrender.com/search/${e.target.value}`)
+
       result = await result.json()
+
+
 
       if (result.result !== 'Student Not Found...') {
         setStudentData([result.result])
@@ -45,9 +56,16 @@ const Data = () => {
   const deleteAPI = async () => {
     let result = await fetch(`https://studentmanagement-backend.onrender.com/delete/${delID}`, {  //eslint-disable-line
       method: 'DELETE'
-    })
+    },
+      setSpinnerState(true)
+    )
 
-//     result = await result.json()
+    result = await result.json()
+
+
+    if (result) {
+      setSpinnerState(false)
+    }
 
     toast.success('Student Deleted Successfully...', {
       position: "top-center",
@@ -58,7 +76,7 @@ const Data = () => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-      });
+    });
 
     setDelID(null)
   }
@@ -71,6 +89,8 @@ const Data = () => {
 
   return (
     <>
+      {spinnerState ? <Loading /> : null}
+
       <div className="container-fluid">
 
         {/* Back */}
